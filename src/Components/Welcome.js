@@ -1,4 +1,4 @@
-function Welcome(onStart) {
+function Welcome({ onStart }) {
     return (
 
 <div className="welcome-container">

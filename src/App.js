@@ -1,4 +1,4 @@
-import './App.css';
+import './Components/Welcome.css';
 import React, { useState } from 'react';
 import Welcome from "./Components/Welcome";
 import Quiz from "./Components/Quiz";
@@ -18,7 +18,7 @@ function App() {
       {!started ? (
         <Welcome onStart={() => setStarted(true)} />
       ) : currentQuestion < quizData.length ? (
-        <div
+        <Quiz
         data = {quizData[currentQuestion]} 
         onAnswer={handleAnswer}
         />
