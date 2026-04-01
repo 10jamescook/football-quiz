@@ -1,0 +1,35 @@
+.welcome-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-container h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.welcome-container p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 1em;
+  color: #555;
+}
+
+.start-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}
