@@ -1,3 +1,6 @@
+function Welcome(onStart) {
+    return (
+
 <div className="welcome-container">
     <h1> Welcome to the Football Quiz!</h1>
 
@@ -15,5 +18,9 @@
       </ul>
     </div>
 
-    <button className="start-button">Start Quiz</button>
+    <button onClick={onStart}>Start Quiz!</button>
   </div>
+    );
+}
+
+export default Welcome;
