@@ -4,65 +4,122 @@ import Welcome from "./Components/Welcome";
 import Quiz from "./Components/Quiz";
 import quizData from "./Data/questions";
 
-
 function App() {
   const [started, setStarted] = useState(false);
+  const [finished, setFinished] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  
+  const [answered, setAnswered] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
   const handleAnswer = (selected) => {
-    const correctAnswer = quizData[currentQuestion].answers;
+    if (answered) return;
+
+    const correctIndex = quizData[currentQuestion].correct;
+    const correctAnswer = quizData[currentQuestion].answers[correctIndex];
 
     if (selected === correctAnswer) {
       setScore((prev) => prev + 1);
-    };
+      setFeedback("correct");
+    } else {
+      setFeedback("incorrect");
+    }
 
-    const nextQuestion = () => {
-      if (currentQuestion < quizData.length - 1) {
-        setCurrentQuestion((prev) => prev + 1);
-      }
-    };
+    setAnswered(true);
+  };
 
-    const prevQuestion = () => {
-      if (currentQuestion > 0) {
-        setCurrentQuestion((prev) => prev - 1);
-      }
-    };
+  const nextQuestion = () => {
+    if (currentQuestion < quizData.length - 1) {
+      setCurrentQuestion((prev) => prev + 1);
+      setAnswered(false);
+      setFeedback(null);
+    }
+  };
 
-  return ( 
+  const prevQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion((prev) => prev - 1);
+      setAnswered(false);
+      setFeedback(null);
+    }
+  };
+
+  const finishQuiz = () => {
+    setFinished(true);
+  };
+
+  const restartQuiz = () => {
+    setStarted(false);
+    setFinished(false);
+    setCurrentQuestion(0);
+    setScore(0);
+    setAnswered(false);
+    setFeedback(null);
+  };
+
+  return (
     <div>
       {!started ? (
         <Welcome onStart={() => setStarted(true)} />
-      ) : currentQuestion < quizData.length ? (
-        <>
-          <h2>Score: {score} </h2>
+      ) : finished ? (
+        <div>
+          <h2>Quiz Completed! 🎉</h2>
+          <h3>Final Score: {score}/{quizData.length}</h3>
 
-        <Quiz
-        data = {quizData[currentQuestion]} 
-        onAnswer={handleAnswer}
-        />
-
-        <button 
-        onClick={prevQuestion}
-        disabled={currentQuestion === 0}
-        >
-          Previous
-        </button>
-
-        <button
-        onClick={nextQuestion}
-        disabled={currentQuestion === quizData.length - 1}
-        >
-          Next
-        </button>
-        </>     
+          <button onClick={restartQuiz}>
+            Restart Quiz
+          </button>
+        </div>
       ) : (
-        <h2>Quiz Completed! Thanks for playing.</h2>
+        <>
+          <h2>Score: {score}</h2>
+
+          <Quiz
+            data={quizData[currentQuestion]}
+            onAnswer={handleAnswer}
+            answered={answered}
+          />
+
+          {/* Feedback */}
+          <div style={{ marginTop: "10px" }}>
+            {feedback && (
+              <h3 style={{ color: feedback === "correct" ? "green" : "red" }}>
+                {feedback === "correct" ? "✅ Correct!" : "❌ Incorrect!"}
+              </h3>
+            )}
+
+            {feedback === "incorrect" && (
+              <p>
+                Correct answer: {
+                  quizData[currentQuestion].answers[
+                    quizData[currentQuestion].correct
+                  ]
+                }
+              </p>
+            )}
+          </div>
+
+          {/* Navigation */}
+          <button
+            onClick={prevQuestion}
+            disabled={currentQuestion === 0}
+          >
+            Previous
+          </button>
+
+          {currentQuestion === quizData.length - 1 ? (
+            <button onClick={finishQuiz}>
+              Finish
+            </button>
+          ) : (
+            <button onClick={nextQuestion}>
+              Next
+            </button>
+          )}
+        </>
       )}
     </div>
   );
 }
-}
-
 
 export default App;
