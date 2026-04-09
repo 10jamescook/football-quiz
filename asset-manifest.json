@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/football-quiz/static/css/main.7082afee.css",
-    "main.js": "/football-quiz/static/js/main.0fa3c5c8.js",
-    "static/js/453.9a2b0349.chunk.js": "/football-quiz/static/js/453.9a2b0349.chunk.js",
-    "index.html": "/football-quiz/index.html",
-    "main.7082afee.css.map": "/football-quiz/static/css/main.7082afee.css.map",
-    "main.0fa3c5c8.js.map": "/football-quiz/static/js/main.0fa3c5c8.js.map",
-    "453.9a2b0349.chunk.js.map": "/football-quiz/static/js/453.9a2b0349.chunk.js.map"
+    "main.css": "/Football-Quiz/static/css/main.7082afee.css",
+    "main.js": "/Football-Quiz/static/js/main.44b7b78d.js",
+    "static/js/453.9a2b0349.chunk.js": "/Football-Quiz/static/js/453.9a2b0349.chunk.js",
+    "index.html": "/Football-Quiz/index.html",
+    "main.7082afee.css.map": "/Football-Quiz/static/css/main.7082afee.css.map",
+    "main.44b7b78d.js.map": "/Football-Quiz/static/js/main.44b7b78d.js.map",
+    "453.9a2b0349.chunk.js.map": "/Football-Quiz/static/js/453.9a2b0349.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7082afee.css",
-    "static/js/main.0fa3c5c8.js"
+    "static/js/main.44b7b78d.js"
   ]
 }
