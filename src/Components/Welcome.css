@@ -103,3 +103,20 @@ button:hover:not(:disabled) {
 .card h2 {
   margin-top: 0;
 }
+
+.quiz-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.quiz-caption {
+  font-style: italic;
+  margin-top: 5px;
+  max-width: 350px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 8px;
+}

@@ -1,64 +1,57 @@
 import React from 'react';
 
 function Quiz({ data, onAnswer, answered, selectedAnswer }) {
-  if (!data) return <div>Loading...</div>;
+if (!data) return <div>Loading...</div>;
 
-  const correctAnswer = data.answers[data.correct];
+return ( <div> <h2>{data.question}</h2>
 
-  return ( 
-    <div>
-      <h2>{data.question}</h2>
 
-      {data.image && (
-       <img 
-  src={data.image} 
-  alt="question visual" 
-  style={{
-    width: "100%",
-    maxWidth: "350px",
-    borderRadius: "10px",
-    margin: "10px 0"
-  }}
-/>
-      )}
+  {data.image && (
+    <img 
+      src={data.image} 
+      alt="question visual" 
+      className="quiz-image"
+    />
+  )}
 
-      {data.caption && (
-  <p style={{ fontStyle: "italic", marginTop: "5px", width: "100%", maxWidth: "400px", borderRadius: "10px", backgroundColor: "#f0f0f0", padding: "5px" }}>
-    {data.caption}
-  </p>
-)}
+  {data.caption && (
+    <p className="quiz-caption">
+      {data.caption}
+    </p>
+  )}
 
-<div style={{ marginTop: "15px" }}> 
-      {data.answers.map((option, index) => {
-        let backgroundColor = "";
+  <div className="answers">
+    {data.answers.map((option, index) => {
+      let className = "answer-btn";
 
-        if (answered) {
-          if (option === correctAnswer) {
-            backgroundColor = "green";
-          } else if (option === selectedAnswer) {
-            backgroundColor = "red";
-          }
+
+      if (answered) {
+        if (index === data.correct) {
+          className += " correct";
+        } else if (index === selectedAnswer) {
+          className += " incorrect";
         }
+      } else if (index === selectedAnswer) {
+        className += " selected";
+      }
+
+      return (
+        <button 
+          key={index}
+          onClick={() => onAnswer(index)} 
+          disabled={answered}
+          className={className}
+        >
+          {option}
+        </button>
+      );
+    })}
+  </div>
+</div>
 
 
-        return (
-          <button 
-            key={index}
-            onClick={() => onAnswer(option)}
-            disabled={answered}
-            style={{ 
-              backgroundColor,
-              color: answered ? "black" : "white",
-              margin: "5px"
-            }}
-          >
-            {option}
-          </button>
-        );
-      })}
-    </div>
-    </div>
-  );
+);
 }
 
 export default Quiz;
+

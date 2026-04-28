@@ -29,7 +29,7 @@ const questions = [
         image: "https://blog.oliversports.ai/hubfs/Balon%20de%20Oro.png",
         caption: "Ballon d'Or Trophy",
         answers: ["Cristiano Ronaldo", "Lionel Messi", "Kylian Mbappé", "Erling Haaland"],
-        correct: 2
+        correct: 1
     },
     {
         id: 5,
