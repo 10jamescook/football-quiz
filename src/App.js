@@ -1,8 +1,8 @@
+import './Components/Welcome.css';
 import React, { useState } from 'react';
 import Welcome from "./Components/Welcome";
 import Quiz from "./Components/Quiz";
 import quizData from "./Data/questions";
-import './Components/Welcome.css';
 
 // Shuffle function
 function shuffleArray(array) {
@@ -22,6 +22,7 @@ const [currentQuestion, setCurrentQuestion] = useState(0);
 const [score, setScore] = useState(0);
 const [answered, setAnswered] = useState(false);
 const [selectedAnswer, setSelectedAnswer] = useState(null);
+const [feedback, setFeedback] = useState(null);
 
 // Start quiz
 const handleStart = () => {
@@ -41,6 +42,9 @@ setAnswered(true);
 
 if (index === correctIndex) {
   setScore((prev) => prev + 1);
+  setFeedback("correct");
+} else {
+  setFeedback("incorrect");
 }
 
 
@@ -52,6 +56,7 @@ if (currentQuestion < questions.length - 1) {
 setCurrentQuestion((prev) => prev + 1);
 setAnswered(false);
 setSelectedAnswer(null);
+setFeedback(null);
 }
 };
 
@@ -64,6 +69,7 @@ setCurrentQuestion(0);
 setScore(0);
 setAnswered(false);
 setSelectedAnswer(null);
+setFeedback(null);
 };
 
 const progress =
@@ -120,19 +126,40 @@ return ( <div className="app-container">
         />
       )}
 
+      {/* Feedback */}
+      <div style={{ marginTop: "10px" }}>
+        {feedback && (
+          <h3 style={{ color: feedback === "correct" ? "green" : "red" }}>
+            {feedback === "correct" ? "✅ Correct!" : "❌ Incorrect!"}
+          </h3>
+        )}
+
+        {feedback === "incorrect" && (
+          <p>
+            Correct answer:{" "}
+            {
+              questions[currentQuestion].answers[
+                questions[currentQuestion].correct
+              ]
+            }
+          </p>
+        )}
+      </div>
+
       {/* Navigation */}
       {currentQuestion === questions.length - 1 ? (
-        <button onClick={() => setFinished(true)}>
+        <button onClick={() => setFinished(true)} disabled={!answered}>
           Finish
         </button>
       ) : (
-        <button onClick={nextQuestion}>
+        <button onClick={nextQuestion} disabled={!answered}>
           Next
         </button>
       )}
     </div>
   )}
 </div>
+
 
 );
 }
