@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.7082afee.css",
-    "main.js": "./static/js/main.d81f6aec.js",
-    "static/js/453.9a2b0349.chunk.js": "./static/js/453.9a2b0349.chunk.js",
-    "index.html": "./index.html",
-    "main.7082afee.css.map": "./static/css/main.7082afee.css.map",
-    "main.d81f6aec.js.map": "./static/js/main.d81f6aec.js.map",
-    "453.9a2b0349.chunk.js.map": "./static/js/453.9a2b0349.chunk.js.map"
+    "main.css": "/football-quiz/static/css/main.cf310420.css",
+    "main.js": "/football-quiz/static/js/main.dfcf061f.js",
+    "static/js/453.9a2b0349.chunk.js": "/football-quiz/static/js/453.9a2b0349.chunk.js",
+    "index.html": "/football-quiz/index.html",
+    "main.cf310420.css.map": "/football-quiz/static/css/main.cf310420.css.map",
+    "main.dfcf061f.js.map": "/football-quiz/static/js/main.dfcf061f.js.map",
+    "453.9a2b0349.chunk.js.map": "/football-quiz/static/js/453.9a2b0349.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7082afee.css",
-    "static/js/main.d81f6aec.js"
+    "static/css/main.cf310420.css",
+    "static/js/main.dfcf061f.js"
   ]
 }
